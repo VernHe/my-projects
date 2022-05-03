@@ -1,0 +1,16 @@
+goos: windows
+goarch: amd64
+pkg: github.com/go-programming-tour-book/cache/fast
+cpu: Intel(R) Core(TM) i7-7700HQ CPU @ 2.80GHz
+BenchmarkTourFastCacheSetParallel-8   	 9873276	       127.7 ns/op	      38 B/op	       2 allocs/op
+BenchmarkTourFastCacheSetParallel-8   	10938276	       127.4 ns/op	      37 B/op	       2 allocs/op
+BenchmarkTourFastCacheSetParallel-8   	10839696	       127.3 ns/op	      37 B/op	       2 allocs/op
+BenchmarkTourFastCacheSetParallel-8   	10647916	       127.2 ns/op	      37 B/op	       2 allocs/op
+BenchmarkTourFastCacheSetParallel-8   	10110942	       126.0 ns/op	      38 B/op	       2 allocs/op
+BenchmarkTourFastCacheSetParallel-8   	10839676	       137.1 ns/op	      37 B/op	       2 allocs/op
+BenchmarkTourFastCacheSetParallel-8   	10719894	       133.5 ns/op	      37 B/op	       2 allocs/op
+BenchmarkTourFastCacheSetParallel-8   	10456203	       124.8 ns/op	      38 B/op	       2 allocs/op
+BenchmarkTourFastCacheSetParallel-8   	 9943857	       128.9 ns/op	      38 B/op	       2 allocs/op
+BenchmarkTourFastCacheSetParallel-8   	10262953	       137.1 ns/op	      38 B/op	       2 allocs/op
+PASS
+ok  	github.com/go-programming-tour-book/cache/fast	15.180s

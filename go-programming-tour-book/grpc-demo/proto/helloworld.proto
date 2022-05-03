@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package helloworld;
+option go_package = "../proto"; // 生成路径是当前目录
+
+service Greeter {
+  // 发送一次RPC请求
+  rpc SayHello (HelloRequest) returns (HelloReplay) {};
+
+  // 收到多次RPC请求
+  rpc SayList (HelloRequest) returns (stream HelloReplay) {};
+
+  // 发送多次RPC请求
+  rpc SayRecord(stream HelloRequest) returns (HelloReplay) {};
+
+  // 多次收发请求
+  rpc SayRoute(stream HelloRequest) returns (stream HelloReplay) {};
+}
+
+
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReplay {
+  string message = 1;
+}
