@@ -1,0 +1,26 @@
+/**
+
+protoc --proto_path=. \  // proto文件所在路径（）
+--go_out=. \             // go文件生成的路径
+addressbook.proto        // 根据哪些proto文件生成Go文件
+
+ */
+
+syntax = "proto3";
+package protobuf; // 此proto文件所在包
+
+option go_package = "../protobuf"; // 生成的Go代码的包路径，不能使用"./"，否则生成的go文件的package为"--"
+
+message SearchRequest {
+  string request = 1;
+}
+
+message SearchResponse {
+  string response = 1;
+}
+
+// 定义服务
+service SearchService {
+  // 定义服务的接口以及请求参数与返回值
+  rpc Search(SearchRequest) returns (SearchResponse);
+}
