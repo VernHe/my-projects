@@ -20,7 +20,16 @@ message SearchResponse {
 }
 
 // 定义服务
-service SearchService {
-  // 定义服务的接口以及请求参数与返回值
-  rpc Search(SearchRequest) returns (SearchResponse);
+service Search {
+  // 定义服务的接口以及请求参数与返回值(各发一条消息)
+  rpc Search(SearchRequest) returns (SearchResponse){}
+
+  // 客户端发多个消息
+  rpc ClientStreamSearch(stream SearchRequest) returns (SearchResponse){}
+
+  // 服务端返回多个消息
+  rpc ServerStreamSearch(SearchRequest) returns (stream SearchResponse){}
+
+  // 双方都发送多条消息
+  rpc StreamSearch(stream SearchRequest) returns (stream SearchResponse){}
 }

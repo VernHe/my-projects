@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+	"unsafe"
+)
 
 func main() {
 	//var s1 []int                // 长度和容量默认都是0
@@ -13,7 +17,9 @@ func main() {
 	//fmt.Printf("【切片容量】 s1: %d, s2: %d, s3: %d, s4: %d\n", cap(s1), cap(s2), cap(s3), cap(s4))
 	//testCutOut()
 	//testSliceCopy()
-	testExpansion()
+	//testExpansion()
+
+	testStruct()
 }
 
 func testCutOut() {
@@ -65,4 +71,37 @@ func testExpansion() {
 	//nums3 = append(nums3, 1)
 	//fmt.Printf("new cap: %d\n", cap(nums3))
 
+}
+
+func testStruct() {
+	// nil
+	var a = []int{1, 2, 3, 4, 5}
+	// not nil
+	b := make([]int, 3)
+	fmt.Println(b)
+
+	if a == nil {
+		fmt.Println("a is nil")
+	} else {
+		fmt.Println("a is not nil")
+	}
+
+	if b == nil {
+		fmt.Println("b is nil")
+	} else {
+		fmt.Println("b is not nil")
+	}
+
+	as := (*reflect.SliceHeader)(unsafe.Pointer(&a))
+	bs := (*reflect.SliceHeader)(unsafe.Pointer(&b))
+
+	fmt.Printf("len = %d, cap = %d, type = %d\n", len(a), cap(a), as.Data)
+	fmt.Printf("len = %d, cap = %d, type = %d\n", len(b), cap(b), bs.Data)
+
+	// 改变指向的底层数组
+	bs.Data = as.Data
+	fmt.Println(b)
+	// 改变b切片
+	b[0] = 5
+	fmt.Println(a)
 }
