@@ -4,7 +4,7 @@ import "fmt"
 
 // Map只支持并发读
 func main() {
-	testHash()
+	test1()
 }
 
 // 测试并发读写
